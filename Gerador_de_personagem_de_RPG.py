@@ -1,6 +1,6 @@
 import random
 
-# VARIÁVEIS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VARIÁVEIS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 nomes = [
     "Thalion", "Eldrin", "Kae", "Lirael", "Draegon", "Aeris", "Fenric", "Astrid", "Morthos", "Rammus", "Rek'Sai", "Rell",
     "Velora", "Arden", "Selene", "Brynna", "Falarion", "Kaelen", "Lirael", "Tirael", "Doran", "Renata", "Renekton", "Rumble",
@@ -65,20 +65,20 @@ classes = [
 
 alinhamentos = ["Leal e Bom", "Neutro", "Caótico e Malvado"]
 
-# GERAR ALEATÓRIO DAS VARIÁVEIS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GERAR ALEATÓRIO DAS VARIÁVEIS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 nome = random.choice(nomes)
 raca = random.choice(racas)
 classe = random.choice(classes)
 alinhamento = random.choice(alinhamentos)
 
-# O NOVO PERSONAGEM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ O NOVO PERSONAGEM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 print("\n\033[1;32mSeu novo personagem\033[0m")
 print(f"Nome: {nome}")
 print(f"Raça: {raca}")
 print(f"Classe: {classe}")
 print(f"Alinhamento: {alinhamento}\n")
 
-#━━━━━━━━━━━━━━━━━━━━━  FAPIC DO PERSONAGEM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  FAPIC DO PERSONAGEM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 while True:
     opcao = input("\033[1;34mSobre o fapic do seu personagem, você já sabe quais são ou quer ajuda?\033[0m\n\n"
                   "1. Já sei qual é meu fapic\n"
@@ -97,41 +97,42 @@ while True:
     else:
         print("\033[1;31mOh ooh, eu não sei qual opção é essa, por favor, escolha 1 ou 2\033[0m\n")
 
-#━━━━━━━━━━━━━━━━━━━ NUMERO DOS DADOS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NUMERO DOS DADOS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 while True:
     opcaodados = input("S. Sim, tenho os números\nN. Não tenho os números\nEscolha uma opção: ").strip().lower()
     print("")
 
     if opcaodados == "s":
-        while True:  # 🔥 Agora esse loop mantém o usuário aqui até ele digitar 5 números certinhos 🔥
+        while True:
             numeros = input("Me diga, quais são os números? Não esqueça dos espaços entre eles (Exemplo: 1 2 3 4 5): ").split()
             
-            # Tenta converter para inteiro
+            
             try:
-                numeros = [int(num.strip()) for num in numeros]  # Converte os números para inteiros
+                numeros = [int(num.strip()) for num in numeros] 
             except ValueError:
                 print("\033[1;31mErro! Certifique-se de digitar apenas números separados por espaço.\033[0m\n")
-                continue  # Volta a pedir os números
+                continue  
 
             if len(numeros) != 5:
                 print("\033[1;31mVocê precisa fornecer exatamente 5 números.\033[0m")
-                continue  # Continua no loop e pede de novo
+                continue 
 
-            numeros.sort()  # 🔥 Ordena os números antes de mostrar
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ORDENANDO OS NUMEROS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            numeros.sort()
             print(f"Seus números serão (em ordem crescente): {' '.join(map(str, numeros))}")
-            break  # 🔥 Agora esse break sai apenas do loop de pegar números, sem voltar pro menu S/N!
+            break 
 
     elif opcaodados == "n":
         numeros = [random.randint(1, 6) for _ in range(5)]
-        numeros.sort()  #  Ordena os números sorteados antes de mostrar
+        numeros.sort()
         print(f"Seus números serão (em ordem crescente): {', '.join(map(str, numeros))}")
         break  
 
     else:
         print("\033[1;31mEpa, peraí, você deve escrever apenas S ou N, por favor.\033[0m\n")
 
-# Atribuindo os números aos fapics (agora de forma aleatória)
-    random.shuffle(numeros)  #  Embaralha os números só na distribuição dos atributos
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FAPICS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    random.shuffle(numeros) 
 
     fapics = ["Força", "Agilidade", "Perícia", "Inteligência", "Constituição"]
     print("\nDistribuição dos atributos:")
@@ -140,3 +141,5 @@ while True:
 
     print("\n\033[1;32mEstá pronto seu personagem, divirta-se!\033[0m\n")
     break
+
+#━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GG ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
